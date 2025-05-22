@@ -18,7 +18,7 @@ Un pequeño juego 2D tipo runner en Unity, inspirado en Super Tux. El jugador sa
 
 1. Clona el repositorio:
 ```bash
-   git clone https://github.com/tu-usuario/super-tux-runner-jump-2d-example.git
+   git clone https://github.com/notyel/super-tux-runner-jump-2d-example.git
 ```
 
 2. Abre el proyecto en Unity.
@@ -26,7 +26,9 @@ Un pequeño juego 2D tipo runner en Unity, inspirado en Super Tux. El jugador sa
 
 ## Créditos
 
-* Inspirado en [Super Tux](https://www.supertux.org/)
-* Desarrollado como ejercicio de práctica en Unity 2D.
+- Sprites y tilesets de entorno: [Pixel Adventure 2 por PixelFrog](https://pixelfrog-assets.itch.io/pixel-adventure-2)
+- Fondos paralax estilo jungla: [Jungle Parallax por PixelOverload](https://pixeloverload.itch.io/jungle-parallax-assets)
+- Personaje principal (héroe): [Tiny Hero Sprite Pack 2 por Free Game Assets](https://free-game-assets.itch.io/pixel-art-tiny-hero-sprite-sheets-pack-2)
+- Desarrollado como ejercicio de práctica en Unity 2D.
 
 
