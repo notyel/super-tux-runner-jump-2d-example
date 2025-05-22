@@ -12,7 +12,7 @@ Un pequeño juego 2D tipo runner en Unity, inspirado en Super Tux. El jugador sa
 
 ## Requisitos
 
-- Unity 2021.3 o superior
+- Unity Unity 6000.0.49f1 o superior
 
 ## Instrucciones
 
