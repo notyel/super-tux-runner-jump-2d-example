@@ -200,4 +200,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpSound: {fileID: 8300000, guid: cca47b7cec8abed4e86d6ff022cbf9f9, type: 3}
   gameManager: {fileID: 0}
-  jumpForce: 7
+  jumpForce: 6

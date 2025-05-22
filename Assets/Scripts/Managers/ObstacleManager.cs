@@ -60,10 +60,10 @@ public class ObstacleManager
         rockList.Add(obstacle1);
         lastObstacleX = spawnX;
 
-        // Con probabilidad, genera un segundo obstáculo inmediato (salto rápido)
+        // Con probabilidad, genera un segundo obstáculo con espacio suficiente para caer y volver a saltar
         if (Random.value < sequenceChance)
         {
-            float sequenceSpacing = Random.Range(1.0f, 2.0f); // Espacio corto entre los dos
+            float sequenceSpacing = Random.Range(3.0f, 4.0f); // Distancia mínima de 3 unidades
             GameObject prefab2 = Random.value < 0.5f ? rock : rockSmall;
             GameObject obstacle2 = Object.Instantiate(prefab2, new Vector3(spawnX + sequenceSpacing, y, 0), Quaternion.identity);
             rockList.Add(obstacle2);
