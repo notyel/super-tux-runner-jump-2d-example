@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
+[RequireComponent(typeof(AudioSource))]
 public class GameAudioController : MonoBehaviour
 {
     public static GameAudioController instance;
@@ -14,17 +16,17 @@ public class GameAudioController : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 1f);
         }
 
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void ExecuteSound(AudioClip audio)
+    public void ExecuteSound(AudioClip audio, float volume = 1f)
     {
         if (audioSource != null)
         {
-            audioSource.PlayOneShot(audio);
+            audioSource.PlayOneShot(audio, volume);
         }
     }
 }

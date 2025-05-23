@@ -10,6 +10,8 @@ public class ObstaclePassed : MonoBehaviour
         {
             ScoreManager.Instance.AddPoints(100);
             hasScored = true;
+
+            Destroy(gameObject, 1f);
         }
     }
 }

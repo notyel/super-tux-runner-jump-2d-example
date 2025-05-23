@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public GameObject groundCollisionMap;
     public GameObject rock;
     public GameObject rockSmall;
+    public GameObject coinNormal;
+    private CoinManager coinManager;
+
 
     public bool isGameOver = false;
     public bool isGameStarted = false;
@@ -33,6 +36,7 @@ public class GameManager : MonoBehaviour
 
         groundManager = new GroundManager(groundCollisionMap, speed);
         obstacleManager = new ObstacleManager(obstacleModels, speed);
+        coinManager = new CoinManager(coinNormal, speed);
     }
 
     void Update()
@@ -57,8 +61,10 @@ public class GameManager : MonoBehaviour
         {
             startMenu.SetActive(false);
             background.material.mainTextureOffset += new Vector2(0.01f, 0) * Time.deltaTime;
+           
             groundManager.Update();
             obstacleManager.Update();
+            coinManager.Update();
         }
     }
 }
