@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TimerController : MonoBehaviour
 {
-    [SerializeField] private float startTime = 300f; // Tiempo en segundos (5 minutos)
+    [SerializeField] private float startTime = 280f; // Tiempo en segundos (4 minutos con 40 segundos)
     private float currentTime;
     private bool isRunning = false;
 
