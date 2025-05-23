@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public float jumpForce = 7f;
     private bool isJumping = false;
+    private bool isGrounded = false;
 
     void Start()
     {
@@ -32,7 +33,14 @@ public class PlayerController : MonoBehaviour
         if (rb.bodyType != RigidbodyType2D.Dynamic)
             rb.bodyType = RigidbodyType2D.Dynamic;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        Debug.DrawRay(transform.position, Vector3.down * 1.1f, Color.red);
+        if (Physics2D.Raycast(transform.position, Vector3.down, 1.1f))
+        {
+            isGrounded = true;
+        }
+        else isGrounded = false;
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             StartCoroutine(JumpWithDelay());
         }

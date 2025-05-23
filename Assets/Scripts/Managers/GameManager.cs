@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public bool isGameStarted = false;
 
     private GroundManager groundManager;
+    [SerializeField] private ObstacleData[] obstacleModels;
     private ObstacleManager obstacleManager;
 
     private float speed = 2.0f;
@@ -24,9 +25,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
+        obstacleModels = new ObstacleData[]
+        {
+            new ObstacleData { prefab = rock, spawnProbability = 0.5f },
+            new ObstacleData { prefab = rockSmall, spawnProbability = 0.5f }
+        };
 
         groundManager = new GroundManager(groundCollisionMap, speed);
-        obstacleManager = new ObstacleManager(rock, rockSmall, speed);
+        obstacleManager = new ObstacleManager(obstacleModels, speed);
     }
 
     void Update()

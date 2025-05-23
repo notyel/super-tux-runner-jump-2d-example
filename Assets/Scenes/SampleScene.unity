@@ -963,10 +963,9 @@ MonoBehaviour:
   groundCollisionMap: {fileID: 569589133386625520, guid: d9ce71ad8fbe7824b92f7e6ef5f41cfc, type: 3}
   rock: {fileID: 7599090883567162355, guid: 504a6ff3a999d54448e977711eec883e, type: 3}
   rockSmall: {fileID: 574660965533147626, guid: 6a84b6f2f1015804b9dd7873bbc34f13, type: 3}
-  groundCollisionMapList: []
-  rockList: []
   isGameOver: 0
   isGameStarted: 0
+  obstacleModels: []
 --- !u!4 &1016067452
 Transform:
   m_ObjectHideFlags: 0
@@ -1131,16 +1130,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1016067451}
     - target: {fileID: 2468076761722442864, guid: 32b15fef82c6d1d4eb4e3046527d7cdd, type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2468076761722442864, guid: 32b15fef82c6d1d4eb4e3046527d7cdd, type: 3}
       propertyPath: afterImagePrefab
       value: 
       objectReference: {fileID: 7760048081794584348, guid: ddbab212a6a128c4a997f8f1a195d860, type: 3}
     - target: {fileID: 3046973094420282039, guid: 32b15fef82c6d1d4eb4e3046527d7cdd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.19
+      value: -4.1
       objectReference: {fileID: 0}
     - target: {fileID: 3046973094420282039, guid: 32b15fef82c6d1d4eb4e3046527d7cdd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.42
+      value: -1.45
       objectReference: {fileID: 0}
     - target: {fileID: 3046973094420282039, guid: 32b15fef82c6d1d4eb4e3046527d7cdd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1273,7 +1276,7 @@ GameObject:
   - component: {fileID: 1736311015}
   - component: {fileID: 1736311014}
   m_Layer: 0
-  m_Name: background_theme-2
+  m_Name: background_theme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1289,8 +1292,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d42e4d03bede77f4da125098ab51fc28, type: 3}
-  m_Resource: {fileID: 8300000, guid: d42e4d03bede77f4da125098ab51fc28, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bd546e0a1647c084598980494796f54e, type: 3}
+  m_Resource: {fileID: 8300000, guid: bd546e0a1647c084598980494796f54e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
@@ -1628,7 +1631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &2065277973
 MeshRenderer:
   m_ObjectHideFlags: 0

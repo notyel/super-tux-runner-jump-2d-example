@@ -3,42 +3,40 @@ using UnityEngine;
 
 public class ObstacleManager
 {
-    private GameObject rock;
-    private GameObject rockSmall;
+    private List<ObstacleData> obstaclePrefabs;
+    private List<GameObject> activeObstacles = new();
     private float speed;
     private float obstacleSpawnTimer = 0f;
     private float spawnInterval = 2.5f;
     private float lastObstacleX = 10f;
 
-    private List<GameObject> rockList = new();
-
     private readonly float minDistance = 5f;
     private readonly float maxDistance = 7f;
-    private readonly float sequenceChance = 0.6f; // 30% de probabilidad de doble obstáculo
+    private readonly float sequenceChance = 0.6f;
 
-    public ObstacleManager(GameObject bigRock, GameObject smallRock, float moveSpeed)
+    public ObstacleManager(ObstacleData[] obstacles, float moveSpeed)
     {
-        rock = bigRock;
-        rockSmall = smallRock;
+        obstaclePrefabs = new List<ObstacleData>(obstacles);
         speed = moveSpeed;
 
-        rockList.Add(Object.Instantiate(rock, new Vector2(8, -2), Quaternion.identity));
-        rockList.Add(Object.Instantiate(rockSmall, new Vector2(12, -2), Quaternion.identity));
+        // Instanciar un par de obstáculos iniciales
+        activeObstacles.Add(InstantiateRandomObstacle(new Vector2(8, -2)));
+        activeObstacles.Add(InstantiateRandomObstacle(new Vector2(12, -2)));
     }
 
     public void Update()
     {
-        for (int i = 0; i < rockList.Count; i++)
+        for (int i = 0; i < activeObstacles.Count; i++)
         {
-            if (rockList[i].transform.position.x < -10)
+            if (activeObstacles[i].transform.position.x < -10)
             {
-                Object.Destroy(rockList[i]);
-                rockList.RemoveAt(i);
+                Object.Destroy(activeObstacles[i]);
+                activeObstacles.RemoveAt(i);
                 i--;
                 continue;
             }
 
-            rockList[i].transform.position += Vector3.left * speed * Time.deltaTime;
+            activeObstacles[i].transform.position += Vector3.left * speed * Time.deltaTime;
         }
 
         obstacleSpawnTimer += Time.deltaTime;
@@ -54,20 +52,36 @@ public class ObstacleManager
         float spawnX = lastObstacleX + Random.Range(minDistance, maxDistance);
         float y = -2f;
 
-        // Genera obstáculo principal
-        GameObject prefab1 = Random.value < 0.5f ? rock : rockSmall;
-        GameObject obstacle1 = Object.Instantiate(prefab1, new Vector3(spawnX, y, 0), Quaternion.identity);
-        rockList.Add(obstacle1);
+        GameObject obstacle1 = InstantiateRandomObstacle(new Vector2(spawnX, y));
+        activeObstacles.Add(obstacle1);
         lastObstacleX = spawnX;
 
-        // Con probabilidad, genera un segundo obstáculo con espacio suficiente para caer y volver a saltar
         if (Random.value < sequenceChance)
         {
-            float sequenceSpacing = Random.Range(3.0f, 4.0f); // Distancia mínima de 3 unidades
-            GameObject prefab2 = Random.value < 0.5f ? rock : rockSmall;
-            GameObject obstacle2 = Object.Instantiate(prefab2, new Vector3(spawnX + sequenceSpacing, y, 0), Quaternion.identity);
-            rockList.Add(obstacle2);
-            lastObstacleX = spawnX + sequenceSpacing;
+            float spacing = Random.Range(3f, 4f);
+            GameObject obstacle2 = InstantiateRandomObstacle(new Vector2(spawnX + spacing, y));
+            activeObstacles.Add(obstacle2);
+            lastObstacleX = spawnX + spacing;
         }
+    }
+
+    private GameObject InstantiateRandomObstacle(Vector2 position)
+    {
+        float total = 0f;
+        foreach (var o in obstaclePrefabs)
+            total += o.spawnProbability;
+
+        float rand = Random.value * total;
+        float cumulative = 0f;
+
+        foreach (var o in obstaclePrefabs)
+        {
+            cumulative += o.spawnProbability;
+            if (rand <= cumulative)
+                return Object.Instantiate(o.prefab, position, Quaternion.identity);
+        }
+
+        // Fallback (debería no pasar si la configuración está bien)
+        return Object.Instantiate(obstaclePrefabs[0].prefab, position, Quaternion.identity);
     }
 }
