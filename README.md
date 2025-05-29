@@ -1,6 +1,6 @@
-# super-tux-runner-jump-2d-example
+# (Unity) super-tux-runner-jump-2d-example
 
-(Unity) Un pequeño juego 2D tipo runner en Unity, inspirado en Super Tux. El jugador salta obstáculos en movimiento mientras el fondo y el suelo se desplazan de forma continua. Este proyecto sirve como ejemplo básico de mecánicas de salto, generación de obstáculos y gestión de estados de juego.
+Un pequeño juego 2D tipo runner en Unity, inspirado en Super Tux. El jugador salta obstáculos en movimiento mientras el fondo y el suelo se desplazan de forma continua. Este proyecto sirve como ejemplo básico de mecánicas de salto, generación de obstáculos y gestión de estados de juego.
 
 ## Características
 
