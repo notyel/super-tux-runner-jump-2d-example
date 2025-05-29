@@ -1,0 +1,13 @@
+# Solo contar C# como lenguaje principal
+
+# Ignorar archivos de shader
+*.shader linguist-vendored
+*.cginc linguist-vendored
+*.hlsl linguist-vendored
+
+# Ignorar metadatos y otros archivos no código
+*.meta linguist-generated
+*.unity linguist-generated
+*.prefab linguist-generated
+*.mat linguist-generated
+*.anim linguist-generated
